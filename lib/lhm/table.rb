@@ -15,6 +15,8 @@ module Lhm
       @ddl     = ddl
     end
 
+  # def satifies_monotonically_increasing_numeric_id_column_requirement?
+  # def has_monotonically_increasing_numeric_id_column?
     def satisfies_primary_key?
       !!((id = columns['id']) &&
         id[:type] =~ /int\(\d+\)/ &&
