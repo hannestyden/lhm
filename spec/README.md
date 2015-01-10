@@ -16,7 +16,7 @@ directory master and slave databases will get installed into.
 
 ### Run
 
-    bin/lhm-spec-clobber.sh
+    sh bin/lhm-spec-clobber.sh
 
 You can set the integration specs up to run against a master slave setup by
 running the included that. This deletes the configured lhm master slave setup and reinstalls and configures a master slave setup.
@@ -27,19 +27,19 @@ Follow the manual instructions if you want more control over this process.
 
 ### set up instances
 
-    bin/lhm-spec-setup-cluster.sh
+    sh bin/lhm-spec-setup-cluster.sh
 
 ### start instances
 
-    basedir=/opt/lhm-luster
-    mysqld --defaults-file="$basedir/master/my.cnf"
-    mysqld --defaults-file="$basedir/slave/my.cnf"
+    sh bin/lhm-spec-start-instances.sh
 
 ### run the grants
 
-    bin/lhm-spec-grants.sh
+    sh bin/lhm-spec-grants.sh
 
 ## run specs
+
+Ensure the cluster is running.
 
 Setup the dependency gems
 
