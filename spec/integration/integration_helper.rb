@@ -1,6 +1,7 @@
 # Copyright (c) 2011 - 2013, SoundCloud Ltd., Rany Keddo, Tobias Bielohlawek, Tobias
 # Schmidt
-require 'test_helper'
+require_relative './../test_helper'
+
 require 'yaml'
 begin
   require 'active_support'

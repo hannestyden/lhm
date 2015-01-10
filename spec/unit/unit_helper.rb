@@ -1,6 +1,6 @@
 # Copyright (c) 2011 - 2013, SoundCloud Ltd., Rany Keddo, Tobias Bielohlawek, Tobias
 # Schmidt
-require 'test_helper'
+require_relative './../test_helper'
 
 module UnitHelper
   def fixture(name)

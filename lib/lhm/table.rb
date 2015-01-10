@@ -8,15 +8,17 @@ module Lhm
     attr_reader :name, :columns, :indices, :pk, :ddl
 
     def initialize(name, pk = 'id', ddl = nil)
-      @name = name
+      @name    = name
       @columns = {}
       @indices = {}
-      @pk = pk
-      @ddl = ddl
+      @pk      = pk
+      @ddl     = ddl
     end
 
     def satisfies_primary_key?
-      @pk == 'id'
+      !!((id = columns['id']) &&
+        id[:type] =~ /int\(\d+\)/ &&
+        id[:extra] == 'auto_increment')
     end
 
     def destination_name
@@ -49,10 +51,13 @@ module Lhm
             column_type    = struct_key(defn, 'COLUMN_TYPE')
             is_nullable    = struct_key(defn, 'IS_NULLABLE')
             column_default = struct_key(defn, 'COLUMN_DEFAULT')
+            extra          = struct_key(defn, 'EXTRA')
+
             table.columns[defn[column_name]] = {
-              :type => defn[column_type],
-              :is_nullable => defn[is_nullable],
-              :column_default => defn[column_default]
+              :type           => defn[column_type],
+              :is_nullable    => defn[is_nullable],
+              :column_default => defn[column_default],
+              :extra          => defn[extra]
             }
           end
 
