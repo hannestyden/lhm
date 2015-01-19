@@ -60,9 +60,10 @@ describe Lhm do
 
       slave do
         table_read(:users).columns['logins'].must_equal({
-          :type => 'int(12)',
-          :is_nullable => 'YES',
-          :column_default => '0'
+          :type           => 'int(12)',
+          :is_nullable    => 'YES',
+          :column_default => '0',
+          :extra          => ''
         })
       end
     end
@@ -166,9 +167,10 @@ describe Lhm do
 
       slave do
         table_read(:users).columns['flag'].must_equal({
-          :type => 'tinyint(1)',
-          :is_nullable => 'YES',
-          :column_default => nil
+          :type           => 'tinyint(1)',
+          :is_nullable    => 'YES',
+          :column_default => nil,
+          :extra          => ''
         })
       end
     end
@@ -180,9 +182,10 @@ describe Lhm do
 
       slave do
         table_read(:users).columns['comment'].must_equal({
-          :type => 'varchar(20)',
-          :is_nullable => 'NO',
-          :column_default => 'none'
+          :type           => 'varchar(20)',
+          :is_nullable    => 'NO',
+          :column_default => 'none',
+          :extra          => ''
         })
       end
     end
@@ -196,9 +199,10 @@ describe Lhm do
 
       slave do
         table_read(:small_table).columns['id'].must_equal({
-          :type => 'int(5)',
-          :is_nullable => 'NO',
-          :column_default => '0'
+          :type           => 'int(5)',
+          :is_nullable    => 'NO',
+          :column_default => '0',
+          :extra          => ''
         })
       end
     end
@@ -215,9 +219,10 @@ describe Lhm do
         table_data = table_read(:users)
         table_data.columns['username'].must_equal(nil)
         table_read(:users).columns['login'].must_equal({
-          :type => 'varchar(255)',
-          :is_nullable => 'YES',
-          :column_default => nil
+          :type           => 'varchar(255)',
+          :is_nullable    => 'YES',
+          :column_default => nil,
+          :extra          => ''
         })
 
         # DM & AR versions of select_one return different structures. The
@@ -240,9 +245,10 @@ describe Lhm do
         table_data = table_read(:users)
         table_data.columns['group'].must_equal(nil)
         table_read(:users).columns['fnord'].must_equal({
-          :type => 'varchar(255)',
-          :is_nullable => 'YES',
-          :column_default => 'Superfriends'
+          :type           => 'varchar(255)',
+          :is_nullable    => 'YES',
+          :column_default => 'Superfriends',
+          :extra          => ''
         })
 
         # DM & AR versions of select_one return different structures. The
